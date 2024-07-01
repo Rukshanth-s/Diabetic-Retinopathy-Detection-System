@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS full_retina;
+
+USE full_retina;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    image LONGBLOB,
+    analysis_result VARCHAR(255),
+    upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
