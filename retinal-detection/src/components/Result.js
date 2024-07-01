@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Result.css';
 
-const Result = ({ user }) => {
+const Result = ({ user, onLogout }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { image, result } = location.state || {};
@@ -25,6 +25,7 @@ const Result = ({ user }) => {
       <p>Prediction: {result.className}</p>
       <p>Confidence Score: {result.confidenceScore}</p>
       <button onClick={handleUploadAnother}>Upload Another Image</button>
+      <button onClick={onLogout}>Logout</button>
     </div>
   );
 };

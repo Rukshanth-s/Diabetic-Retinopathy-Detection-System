@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Upload.css';
 
-const Upload = ({ user }) => {
+const Upload = ({ user, onLogout }) => {
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
@@ -33,6 +33,7 @@ const Upload = ({ user }) => {
       <h2>Diabetic Retinopathy Detection System</h2>
       <p>Signed in as: {user.email}</p>
       <input type="file" onChange={handleImageUpload} />
+      <button onClick={onLogout}>Logout</button>
     </div>
   );
 };
