@@ -1,0 +1,50 @@
+/* src/App.css */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('logo.jpg');
+  background-size: cover;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.upload-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.upload-container input[type="file"] {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.result-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.result-container .uploaded-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.result-container p {
+  font-size: 18px;
+  margin: 5px 0;
+}

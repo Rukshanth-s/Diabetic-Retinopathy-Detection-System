@@ -1,0 +1,41 @@
+// src/components/Login.js
+import React from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';  // Correct import statement based on documentation
+import './Login.css';
+
+const Login = ({ setUser }) => {
+  const navigate = useNavigate();
+
+  const handleLoginSuccess = (credentialResponse) => {
+    try {
+      const decodedToken = jwtDecode(credentialResponse.credential);
+      console.log(decodedToken);  // Verify decoded token
+      setUser(decodedToken);
+      localStorage.setItem('google_access_token', credentialResponse.credential);
+      navigate('/upload');
+    } catch (error) {
+      console.error('Failed to decode JWT:', error);
+    }
+  };
+
+  const handleLoginFailure = (error) => {
+    console.error('Login Failed:', error);
+  };
+
+  return (
+    <div className="login-container">
+      <h1>Diabetic Retinopathy Detection System</h1>
+      <GoogleOAuthProvider clientId="979208319197-90bahkc9qie3o8scaaigasop7dkqggdr.apps.googleusercontent.com">
+        <GoogleLogin
+          onSuccess={handleLoginSuccess}
+          onError={handleLoginFailure}
+          useOneTap // This enables the redirect flow
+        />
+      </GoogleOAuthProvider>
+    </div>
+  );
+};
+
+export default Login;

@@ -1,0 +1,14 @@
+/* src/components/Login.css */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('logo.jpg');
+    background-size: cover;
+  }
+
+  .login-container h1 {
+    margin-bottom: 50px; /* Add space between the heading and the button */
+  }
+  

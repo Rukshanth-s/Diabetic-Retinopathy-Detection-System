@@ -1,0 +1,24 @@
+/* src/components/Result.css */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .result-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .result-container .uploaded-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .result-container p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
