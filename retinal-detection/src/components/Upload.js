@@ -31,6 +31,7 @@ const Upload = ({ user }) => {
   return (
     <div className="upload-container">
       <h2>Diabetic Retinopathy Detection System</h2>
+      <p>Signed in as: {user.email}</p>
       <input type="file" onChange={handleImageUpload} />
     </div>
   );

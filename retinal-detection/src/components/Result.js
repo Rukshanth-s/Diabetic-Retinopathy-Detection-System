@@ -20,6 +20,7 @@ const Result = ({ user }) => {
   return (
     <div className="result-container">
       <h2>Classification Result</h2>
+      <p>Signed in as: {user.email}</p>
       <img src={image} alt="Uploaded" className="uploaded-image" />
       <p>Prediction: {result.className}</p>
       <p>Confidence Score: {result.confidenceScore}</p>
