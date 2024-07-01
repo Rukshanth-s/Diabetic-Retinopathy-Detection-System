@@ -1,4 +1,4 @@
-
+// src/components/Upload.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const Upload = ({ user }) => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      navigate('/result', { state: { image: URL.createObjectURL(file), result: response.data } });
+      navigate('/result', { state: { image: URL.createObjectURL(file), result: response.data, user } });
     } catch (error) {
       console.error('Failed to upload image', error);
     }
@@ -37,6 +37,3 @@ const Upload = ({ user }) => {
 };
 
 export default Upload;
-
-
-

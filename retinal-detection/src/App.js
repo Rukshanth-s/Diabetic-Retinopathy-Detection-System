@@ -1,4 +1,3 @@
-
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -21,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/upload" element={user ? <Upload user={user} /> : <Navigate to="/login" />} />
-          <Route path="/result" element={<Result />} />
+          <Route path="/result" element={user ? <Result user={user} /> : <Navigate to="/login" />} />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
@@ -30,5 +29,3 @@ const App = () => {
 };
 
 export default App;
-
-

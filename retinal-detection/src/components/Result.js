@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Result.css';
 
-const Result = () => {
+const Result = ({ user }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { image, result } = location.state || {};
@@ -13,12 +13,17 @@ const Result = () => {
     return null;
   }
 
+  const handleUploadAnother = () => {
+    navigate('/upload', { state: { user } });
+  };
+
   return (
     <div className="result-container">
       <h2>Classification Result</h2>
       <img src={image} alt="Uploaded" className="uploaded-image" />
       <p>Prediction: {result.className}</p>
       <p>Confidence Score: {result.confidenceScore}</p>
+      <button onClick={handleUploadAnother}>Upload Another Image</button>
     </div>
   );
 };
