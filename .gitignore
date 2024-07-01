@@ -3,7 +3,8 @@ node_modules/
 
 # Environment variables
 .env
-
+retinal-detection/.env
+backend/.env
 # Python environment
 full_retina_app/
 
