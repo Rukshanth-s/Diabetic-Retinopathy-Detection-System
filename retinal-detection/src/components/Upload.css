@@ -1,19 +1,31 @@
 /* src/components/Upload.css */
 .upload-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  .upload-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .upload-container input[type="file"] {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+  text-align: center;
+  padding: 20px;
+}
+
+.upload-container h2 {
+  margin-bottom: 20px;
+}
+
+.upload-container p {
+  margin-bottom: 20px;
+}
+
+.upload-container input {
+  margin-bottom: 20px;
+}
+
+.upload-container button {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-container button:hover {
+  background-color: #0056b3;
+}

@@ -60,7 +60,7 @@ app.post('/upload', async (req, res) => {
     return res.status(400).send('No image uploaded');
   }
 
-  const { email } = req.body; // Assuming the email is sent from the frontend
+  const { email } = req.body;
   const image = req.files.image;
 
   const formData = new FormData();
@@ -80,14 +80,14 @@ app.post('/upload', async (req, res) => {
       userId = result.insertId;
     }
 
-    // Classify the image
+    // Classify image
     const response = await axios.post('http://localhost:5001/classify', formData, {
       headers: formData.getHeaders(),
     });
 
     const { className, confidenceScore } = response.data;
 
-    // Insert the image data
+    // Insert image 
     const query = 'INSERT INTO images (user_id, image, analysis_result) VALUES (?, ?, ?)';
     await db.promise().query(query, [userId, image.data, className]);
 

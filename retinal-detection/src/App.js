@@ -1,7 +1,9 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Login from './components/Login';
 import Upload from './components/Upload';
 import Result from './components/Result';
@@ -10,11 +12,6 @@ import './App.css';
 const App = () => {
   const [user, setUser] = useState(null);
 
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem('google_access_token'); // Clear the token if stored in local storage
-  };
-
   useEffect(() => {
     console.log('Current User:', user);
   }, [user]);
@@ -22,12 +19,14 @@ const App = () => {
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <Router>
+        <Header user={user} />
         <Routes>
           <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/upload" element={user ? <Upload user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
-          <Route path="/result" element={user ? <Result user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
+          <Route path="/upload" element={user ? <Upload user={user} /> : <Navigate to="/login" />} />
+          <Route path="/result" element={<Result user={user} />} />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
+        <Footer />
       </Router>
     </GoogleOAuthProvider>
   );

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Upload.css';
 
-const Upload = ({ user, onLogout }) => {
+const Upload = ({ user }) => {
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Upload = ({ user, onLogout }) => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      navigate('/result', { state: { image: URL.createObjectURL(file), result: response.data, user } });
+      navigate('/result', { state: { image: URL.createObjectURL(file), result: response.data } });
     } catch (error) {
       console.error('Failed to upload image', error);
     }
@@ -31,9 +31,9 @@ const Upload = ({ user, onLogout }) => {
   return (
     <div className="upload-container">
       <h2>Diabetic Retinopathy Detection System</h2>
-      <p>Signed in as: {user.email}</p>
+      <p>Signed in as {user.email}</p>
       <input type="file" onChange={handleImageUpload} />
-      <button onClick={onLogout}>Logout</button>
+      <button onClick={() => navigate('/login')}>Logout</button>
     </div>
   );
 };
